@@ -7,10 +7,9 @@ RUN apt-get update && \
 ADD https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64 /usr/bin/jq
 RUN chmod +x /usr/bin/jq
 
-ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
-
 COPY ./run.sh ./probe ./ready-probe.sh /
-RUN chmod u+x /run.sh /probe /ready-probe.sh
+RUN sed -i 's/\r$//' /run.sh && \
+    chmod u+x /run.sh /probe /ready-probe.sh
 
-ENTRYPOINT ["/usr/local/bin/dumb-init", "/run.sh"]
+ENTRYPOINT ["/bin/bash", "/run.sh"]
+

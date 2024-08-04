@@ -93,10 +93,10 @@ spec:
           name: cluster
         resources:
           limits:
-            cpu: "2"
+            cpu: "1"
             memory: "1Gi"
           requests:
-            cpu: "2"
+            cpu: "1"
             memory: "1Gi"
         volumeMounts:
         - mountPath: /data/rethinkdb_data
