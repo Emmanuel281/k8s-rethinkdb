@@ -65,7 +65,7 @@ spec:
         role: replica
     spec:
       containers:
-      - image: rosskukulinski/rethinkdb-kubernetes:2.3.5
+      - image: emmonskii/k8s-rethinkdb
         imagePullPolicy: Always
         name: rethinkdb
         env:
@@ -144,7 +144,7 @@ spec:
     spec:
       serviceAccountName: rethinkdb
       containers:
-      - image: rosskukulinski/rethinkdb-kubernetes:2.3.5
+      - image: emmonskii/k8s-rethinkdb
         imagePullPolicy: Always
         name: rethinkdb
         env:
@@ -218,7 +218,7 @@ spec:
     spec:
       serviceAccountName: rethinkdb
       containers:
-      - image: rosskukulinski/rethinkdb-kubernetes:2.3.5
+      - image: emmonskii/k8s-rethinkdb
         imagePullPolicy: Always
         name: rethinkdb
         env:
