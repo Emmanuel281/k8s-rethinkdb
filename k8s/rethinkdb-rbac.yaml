@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rethinkdb
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rethinkdb
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rethinkdb
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rethinkdb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: rethinkdb
+subjects:
+  - kind: ServiceAccount
+    name: rethinkdb
+    namespace: rethinkdb
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rethinkdb-user
+  namespace: rethinkdb
+  annotations:
+    kubernetes.io/service-account.name: "rethinkdb"   
+type: kubernetes.io/service-account-token  
