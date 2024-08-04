@@ -31,6 +31,12 @@ subjects:
     namespace: rethinkdb
 ---
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rethinkdb
+  namespace: rethinkdb
+---
+apiVersion: v1
 kind: Secret
 metadata:
   name: rethinkdb-user
