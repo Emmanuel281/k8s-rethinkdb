@@ -54,7 +54,6 @@ metadata:
   namespace: rethinkdb
 spec:
   replicas: 1  # Specify the number of replicas (adjust as needed)
-  serviceAccountName: rethinkdb
   selector:
     matchLabels:
       db: rethinkdb
@@ -65,6 +64,7 @@ spec:
         db: rethinkdb
         role: replica
     spec:
+      serviceAccountName: rethinkdb
       containers:
       - image: emmonskii/k8s-rethinkdb
         imagePullPolicy: Always
